@@ -21,9 +21,14 @@
         </div>
         <div class="row">
             <section class="col-12 col-md-3 col-xl-2">
-                <h2 class="m-2">Search For A City:</h2>
-                <input class="form-control mb-2" type="text" placeholder="Perth">
-                <button type="button" class="btn btn-primary w-100 mt-2">Search</button>
+                <h4 class="m-2">Search For A City:</h4>
+                <form id="input-form">
+                    <input id="input-city" class="form-control mb-2" type="text" placeholder="Perth">
+                    <button id="submitBtn" type="button" class="btn w-100 mt-2">Search</button>
+                    <div id="alert-city" class="alert alert-danger mt-2 collapse" role="alert">
+                        Please enter a valid city!
+                    </div>
+                </form>
                 <hr>
                 <div>
                     <ul class="p-0">
@@ -40,7 +45,7 @@
                           
                               <div class="row d-flex">
                                     <div class="col-12">
-                                        <h2>Warsaw <span>DATE</span></span></h2>
+                                        <h2 id="current-city">Warsaw</h2>
                                         <div class="d-flex justify-content-center">
                                         <div class="card w-75">
                                             <div class="card-body p-4">
@@ -52,15 +57,15 @@
                                                 </div>
                           
                                                 <div class="d-flex flex-column text-left mt-5 mb-4">
-                                                    <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> 13°C </h6>
-                                                    <span class="small">Stormy</span>
+                                                    <h6 id="current-max" class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> 13°C </h6>
+                                                    <span id="current-description" class="small">Stormy</span>
                                                 </div>
                           
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1" style="font-size: 1rem;">
-                                                        <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span class="ms-1"> 40 km/h </span></div>
-                                                        <div><i class="fas fa-tint fa-fw"></i>Humidity<span class="ms-1"> 84% </span></div>
-                                                        <div><i class="fas fa-sun fa-fw"></i>UV Index<span class="ms-1"> 0.2h </span></div>
+                                                        <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span id="current-ws" class="ms-1"> 40 m/s </span></div>
+                                                        <div><i class="fas fa-tint fa-fw"></i>Humidity<span id="current-h" class="ms-1"> 84% </span></div>
+                                                        <div><i class="fas fa-sun fa-fw"></i>UV Index<span id="current-uv" class="ms-1"> 0.2h </span></div>
                                                     </div>
                                         
                                                 </div>
@@ -206,5 +211,6 @@
     <script src="/assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/d658f9fe3a.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script type = "text/JavaScript" src = "https://momentjs.com/downloads/moment.js"></script>
 </body>
 </html>
