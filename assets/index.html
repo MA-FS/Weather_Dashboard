@@ -31,9 +31,7 @@
                 </form>
                 <hr>
                 <div>
-                    <ul class="p-0">
-                        <li>One</li>
-                        <li>Two</li>
+                    <ul id="search-history" class="p-0">
                     </ul>
                 </div>
             </section>
@@ -51,7 +49,7 @@
                                             <div class="card-body p-4">
                           
                                                 <div class="d-flex justify-content-between">
-                                                    <div><i class="fas fa-cloud fa-3x"></i></div>
+                                                    <div><img id="current-icon" src="http://openweathermap.org/img/wn/10d@4x.png"></div>
                                                     <h3>TODAY</h3>
                                                     <span></span>
                                                 </div>
@@ -65,7 +63,7 @@
                                                     <div class="flex-grow-1" style="font-size: 1rem;">
                                                         <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span id="current-ws" class="ms-1"> 40 m/s </span></div>
                                                         <div><i class="fas fa-tint fa-fw"></i>Humidity<span id="current-h" class="ms-1"> 84% </span></div>
-                                                        <div><i class="fas fa-sun fa-fw"></i>UV Index<span id="current-uv" class="ms-1"> 0.2h </span></div>
+                                                        <div><i class="fas fa-sun fa-fw"></i>UV Index<span id="current-uv" class="ms-1 low"> 0.2h </span><span id="uv-desc" class="low">(Low)</span></div>
                                                     </div>
                                         
                                                 </div>
@@ -93,19 +91,19 @@
                                                 <div class="card-body p-2 py-4">
                           
                                                     <div class="d-flex flex-column">
-                                                        <h6>22/09/2021</h6>
-                                                        <div><i class="fas fa-cloud fa-3x"></i></div>
+                                                        <h6 id="card-date-1">22/09/2021</h6>
+                                                        <div><img id="card-icon-1" src="http://openweathermap.org/img/wn/10d@4x.png"></div>
                                                     </div>
                           
                                                     <div class="d-flex flex-column text-center mt-5 mb-4">
-                                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> 13°C </h6>
-                                                        <span class="small">Stormy</span>
+                                                        <h6 id="card-temp-1" class="display-4 mb-0 font-weight-bold"> 13°C </h6>
+                                                        <span id="card-description-1" class="small">Stormy</span>
                                                     </div>
                           
                                                     <div class="d-flex align-items-center">
                                                         <div class="flex-grow-1" style="font-size: 1rem;">
-                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span class="ms-1"> 40 km/h </span></div>
-                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span class="ms-1"> 84% </span></div>
+                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span id="card-ws-1" class="ms-1"> 40 km/h </span></div>
+                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span id="card-h-1" class="ms-1"> 84% </span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -115,19 +113,19 @@
                                                 <div class="card-body p-2 py-4">
                           
                                                     <div class="d-flex flex-column">
-                                                        <h6>22/09/2021</h6>
-                                                        <div><i class="fas fa-cloud fa-3x"></i></div>
+                                                        <h6 id="card-date-2">22/09/2021</h6>
+                                                        <div><img id="card-icon-2" src="http://openweathermap.org/img/wn/10d@4x.png"></div>
                                                     </div>
                           
                                                     <div class="d-flex flex-column text-center mt-5 mb-4">
-                                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> 13°C </h6>
-                                                        <span class="small">Stormy</span>
+                                                        <h6 id="card-temp-2" class="display-4 mb-0 font-weight-bold"> 13°C </h6>
+                                                        <span id="card-description-2" class="small">Stormy</span>
                                                     </div>
                           
                                                     <div class="d-flex align-items-center">
                                                         <div class="flex-grow-1" style="font-size: 1rem;">
-                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span class="ms-1"> 40 km/h </span></div>
-                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span class="ms-1"> 84% </span></div>
+                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span id="card-ws-2" class="ms-1"> 40 km/h </span></div>
+                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span id="card-h-2" class="ms-1"> 84% </span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -136,19 +134,19 @@
                                                 <div class="card-body p-2 py-4">
                           
                                                     <div class="d-flex flex-column">
-                                                        <h6>22/09/2021</h6>
-                                                        <div><i class="fas fa-cloud fa-3x"></i></div>
+                                                        <h6 id="card-date-3">22/09/2021</h6>
+                                                        <div><img id="card-icon-3" src="http://openweathermap.org/img/wn/10d@4x.png"></div>
                                                     </div>
                           
                                                     <div class="d-flex flex-column text-center mt-5 mb-4">
-                                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> 13°C </h6>
-                                                        <span class="small">Stormy</span>
+                                                        <h6 id="card-temp-3" class="display-4 mb-0 font-weight-bold"> 13°C </h6>
+                                                        <span id="card-description-3" class="small">Stormy</span>
                                                     </div>
                           
                                                     <div class="d-flex align-items-center">
                                                         <div class="flex-grow-1" style="font-size: 1rem;">
-                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span class="ms-1"> 40 km/h </span></div>
-                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span class="ms-1"> 84% </span></div>
+                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span id="card-ws-3" class="ms-1"> 40 km/h </span></div>
+                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span id="card-h-3" class="ms-1"> 84% </span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -157,19 +155,19 @@
                                                 <div class="card-body p-2 py-4">
                           
                                                     <div class="d-flex flex-column">
-                                                        <h6>22/09/2021</h6>
-                                                        <div><i class="fas fa-cloud fa-3x"></i></div>
+                                                        <h6 id="card-date-4">22/09/2021</h6>
+                                                        <div><img id="card-icon-4" src="http://openweathermap.org/img/wn/10d@4x.png"></div>
                                                     </div>
                           
                                                     <div class="d-flex flex-column text-center mt-5 mb-4">
-                                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> 13°C </h6>
-                                                        <span class="small">Stormy</span>
+                                                        <h6 id="card-temp-4" class="display-4 mb-0 font-weight-bold"> 13°C </h6>
+                                                        <span id="card-description-4" class="small">Stormy</span>
                                                     </div>
                           
                                                     <div class="d-flex align-items-center">
                                                         <div class="flex-grow-1" style="font-size: 1rem;">
-                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span class="ms-1">40 km/h</span></div>
-                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span class="ms-1"> 84% </span></div>
+                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span id="card-ws-4" class="ms-1">40 km/h</span></div>
+                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span id="card-h-4" class="ms-1"> 84% </span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,19 +176,19 @@
                                                 <div class="card-body p-2 py-4">
                           
                                                     <div class="d-flex flex-column">
-                                                        <h6>22/09/2021</h6>
-                                                        <div><i class="fas fa-cloud fa-3x"></i></div>
+                                                        <h6 id="card-date-5">22/09/2021</h6>
+                                                        <div><img id="card-icon-5" src="http://openweathermap.org/img/wn/10d@4x.png"></div>
                                                     </div>
                           
                                                     <div class="d-flex flex-column text-center mt-5 mb-4">
-                                                        <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> 13°C </h6>
-                                                        <span class="small">Stormy</span>
+                                                        <h6 id="card-temp-5" class="display-4 mb-0 font-weight-bold"> 13°C </h6>
+                                                        <span id="card-description-5" class="small">Stormy</span>
                                                     </div>
                           
                                                     <div class="d-flex align-items-center">
                                                         <div class="flex-grow-1" style="font-size: 1rem;">
-                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span class="ms-1"> 40 km/h </span></div>
-                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span class="ms-1"> 84% </span></div>
+                                                            <div><i class="fas fa-wind fa-fw"></i>Wind Speed<span id="card-ws-5" class="ms-1"> 40 km/h </span></div>
+                                                            <div><i class="fas fa-tint fa-fw"></i>Humidity<span id="card-h-5" class="ms-1"> 84% </span></div>
                                                         </div>
                                                     </div>
                                                 </div>

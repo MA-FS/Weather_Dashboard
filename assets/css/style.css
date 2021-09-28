@@ -47,11 +47,39 @@ h5 {
     text-shadow: #e0e0e0 1px 1px 0;
 }
 
-h3,
-h6 {
+h3 {
     color: var(--primary);
+}
+
+h6 {
+    color: var(--headings);
 }
 
 .btn {
     background-color: #0095FA;
+}
+
+.low {
+   background-color: green; 
+   color: black;
+}
+
+.mod {
+    background-color: yellow; 
+    color: black;
+}
+
+.high {
+    background-color: orange; 
+    color: black;
+}
+
+.vhigh {
+    background-color: red; 
+    color: black;
+}
+
+.extreme {
+    background-color: purple; 
+    color: black;
 }
