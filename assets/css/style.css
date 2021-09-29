@@ -19,6 +19,10 @@ li {
     border-radius: 15px;
 }
 
+li:hover {
+    cursor: pointer;
+}
+
 .card {
     width: 15rem;
     margin: 2px;
