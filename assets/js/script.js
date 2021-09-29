@@ -4,7 +4,9 @@ const inputForm = document.getElementById("input-form")
 const inputCity = document.getElementById("input-city")
 const alertCity = document.getElementById("alert-city")
 const submitBtn = document.getElementById("submitBtn")
+const clearBtn = document.getElementById("clearBtn")
 const searchHistory = document.getElementById("search-history")
+const allCards = document.getElementById("cards-all")
 // Primary weather card constants
 const currentCity = document.getElementById("current-city")
 const currentMax = document.getElementById("current-max")
@@ -14,49 +16,69 @@ const currentHumidity = document.getElementById("current-h")
 const currentUV = document.getElementById("current-uv")
 const currentUVDescription = document.getElementById("uv-desc")
 const currentIcon = document.getElementById("current-icon")
-// History list new element interlock
-var addHistoryInterlock = 1
+// Array for storage of previous search results
+var savedSearchHistory = localStorage.getItem("savedSearches")
+savedSearchHistory = savedSearchHistory ? savedSearchHistory.split(',') : [];
 
+// Populate saved search results with savedSearchHistory from localStorage
+for (i = 0; i < savedSearchHistory.length; i++) {
+    // Create list items
+    var newSearchLi = document.createElement("li")
+    var newSearchText = document.createElement("a")
+
+    // Add city name to list item
+    newSearchText.innerHTML = savedSearchHistory[i]
+
+    // Add to DOM    
+    newSearchLi.appendChild(newSearchText)
+    searchHistory.appendChild(newSearchLi)
+}
+
+// When the user clicks a list item, put target as inputCity value and fill cards
+searchHistory.addEventListener("click", function (event) {
+    event.preventDefault()
+
+    // Retreive the city name
+    inputCity.value = event.target.textContent
+
+    // Run fillCards function
+    fillCards()
+})
+
+// Load Perth on first page load
 inputCity.value = "Perth"
 fillCards()
+
+// When the user clicks clear history, search history list is deleted
+clearBtn.addEventListener("click", function (event) {
+    event.preventDefault()
+
+    // Clear localStorage
+    localStorage.clear()
+    // Clear savedSearchHistory array
+    savedSearchHistory = []
+    // Remove list items
+    searchHistory.innerHTML = ''
+});
 
 // When the user clicks submit, get inputCity and fill weather cards with details
 submitBtn.addEventListener("click", function (event) {
     event.preventDefault()
+    inputCity.disabled = true
     fillCards()
-
-    // Set a delay to allow the interlock to change state depending on response.status
-    addHistoryInterlock = 1
-
     setTimeout(() => {
-
-        // If the response status returns 404, do not print search history.
-        if (addHistoryInterlock === 0) {
-            addHistory()
-        } else {
-            return
-        }
-    }, 500);
-    
+        inputCity.disabled = false
+    }, 1000);
 });
 
 // When the user types a city name and presses enter, get inputCity and fill weather cards with details
 inputForm.addEventListener('submit', function(event){
     event.preventDefault()
+    inputCity.disabled = true
     fillCards()
-
-    // Set a delay to allow the interlock to change state depending on response.status
-    addHistoryInterlock = 1
-
     setTimeout(() => {
-
-        // If the response status returns 404, do not print search history.
-        if (addHistoryInterlock === 0) {
-            addHistory()
-        } else {
-            return
-        }
-    }, 500);
+        inputCity.disabled = false
+    }, 1000);
 })
 
 // When the user submits a search, add search to the search history list
@@ -71,25 +93,23 @@ function addHistory() {
     // Add city name to list item
     newSearchText.innerHTML = city
 
+    // Add city name to saved search history array
+    savedSearchHistory.push(city)
+    // Save array as string in local storage
+    localStorage.setItem("savedSearches", savedSearchHistory.toString());
+
+
     // Add to DOM    
     newSearchLi.appendChild(newSearchText)
     searchHistory.appendChild(newSearchLi)
-
-    // Add event listener to newly created list items
-    newSearchLi.addEventListener("click", function(event) {
-        event.preventDefault();
-
-        // Assign the list element text to the input city value to return correct results
-        inputCity.value = newSearchText.textContent
-
-        // Run fillCards function
-        fillCards()
-    })
 }
 
 function fillCards() {
     // Hide alert whenever the submit button is pressed
     alertCity.setAttribute("class", "alert alert-danger mt-2 collapse")
+
+    // Show weather cards
+    allCards.setAttribute("class", "col-12 col-md-9 col-xl-10 show")
 
     // Retreive the city name
     const city = inputCity.value;
@@ -182,11 +202,9 @@ function getCurrentWeatherAPI(city) {
     ).then(function(response) {
 
         // If 404 is returned then set the addHistoryInterlock to 1
-        if ( response.status !== 404 ) {
-            addHistoryInterlock = 0
-        } else {
-            addHistoryInterlock = 1
-        }
+        if (response.status !== 404 && !savedSearchHistory.includes(inputCity.value)) {
+            addHistory()
+        }        
         return response.json();
     });
 }

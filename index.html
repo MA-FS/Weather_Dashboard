@@ -24,25 +24,26 @@
                 <h4 class="m-2">Search For A City:</h4>
                 <form id="input-form">
                     <input id="input-city" class="form-control mb-2" type="text" placeholder="Perth">
-                    <button id="submitBtn" type="button" class="btn w-100 mt-2">Search</button>
+                    <button id="submitBtn" type="button" class="btn w-100 mt-2 submitBtn">Search</button>
                     <div id="alert-city" class="alert alert-danger mt-2 collapse" role="alert">
                         Please enter a valid city!
                     </div>
                 </form>
                 <hr>
                 <div>
+                    <button id="clearBtn" type="button" class="clearBtn w-100 mt-2">Clear History</button>
                     <ul id="search-history" class="p-0">
                     </ul>
                 </div>
             </section>
-            <div class="col-12 col-md-9 col-xl-10">
+            <div id="cards-all" class="col-12 col-md-9 col-xl-10 collapse">
                 <div class="row">
                     <div>
                         <section>
                             <div class="container p-2">
                                 <div class="row d-flex">
                                     <div class="col-12">
-                                        <h2 id="current-city">Warsaw</h2>
+                                        <h2 id="current-city">Tokyo</h2>
                                         <div class="d-flex justify-content-center">
                                             <div class="card w-50">
                                                 <div class="card-body p-3">
