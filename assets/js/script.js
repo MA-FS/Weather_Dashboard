@@ -228,3 +228,5 @@ function getWeather(city) {
         
     })
 }
+
+// Capitalize city names?

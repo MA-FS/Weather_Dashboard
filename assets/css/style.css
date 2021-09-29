@@ -16,14 +16,28 @@ section {
 
 li {
     list-style-type: none;
-    background-color: var(--list);
     text-align: center;
     margin-top: 1rem;
-    border-radius: 15px;
+    box-shadow:inset 0px 39px 0px -24px #e67a73;
+	background-color:#e4685d;
+	border-radius:4px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	color:#ffffff;
+	font-size:15px;
+	padding:6px 15px;
+	text-shadow:0px 1px 0px #b23e35;
+    width: 100%;
+    cursor: pointer;
+	text-transform: capitalize;
 }
 
-li:hover {
-    cursor: pointer;
+#input-city {
+	text-transform: capitalize;
+}
+
+#current-city {
+	text-transform: capitalize;
 }
 
 .card {
@@ -49,6 +63,7 @@ h5 {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     text-shadow: #e0e0e0 1px 1px 0;
+    letter-spacing: 3px;
 }
 
 h3 {
@@ -60,7 +75,10 @@ h6 {
 }
 
 .banner {
-    background-color: #0095FA;
+    box-shadow:inset 0px 1px 0px 0px #bee2f9;
+	background:linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
+	background-color:#63b8ee;
+	border:1px solid #3866a3;
 }
 
 .submitBtn {
