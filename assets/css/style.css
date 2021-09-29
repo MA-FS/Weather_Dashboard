@@ -6,7 +6,8 @@
 
 }
 
-html {
+html,
+body {
     background-color: var(--primary);
 }
 

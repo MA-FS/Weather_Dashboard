@@ -14,20 +14,41 @@ const currentHumidity = document.getElementById("current-h")
 const currentUV = document.getElementById("current-uv")
 const currentUVDescription = document.getElementById("uv-desc")
 const currentIcon = document.getElementById("current-icon")
+// History list new element interlock
+var addHistoryInterlock = 1
 
 // When the user clicks submit, get inputCity and fill weather cards with details
 submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
     fillCards();
-    addHistory();
+    // Set a delay to allow the interlock to change state depending on response.status
+    setTimeout(() => {
+        // If the response status returns 404, do not print search history.
+        if (addHistoryInterlock === 0) {
+            addHistory();
+        } else {
+            return
+        }
+    }, 1000);
+    
   });
 
 // When the user types a city name and presses enter, get inputCity and fill weather cards with details
 inputForm.addEventListener('submit', function(event){
     event.preventDefault();
     fillCards();
-    addHistory();
+    // Set a delay to allow the interlock to change state depending on response.status
+    setTimeout(() => {
+        // If the response status returns 404, do not print search history.
+        if (addHistoryInterlock === 0) {
+            addHistory();
+        } else {
+            return
+        }
+    }, 1000);
 })
+
+
 
 // When the user submits a search, add search to the search history list
 function addHistory() {
@@ -50,8 +71,6 @@ function addHistory() {
         // Run fillCards function
         fillCards()
     })
-    
-
 }
 
 function fillCards() {
@@ -100,10 +119,9 @@ function fillCards() {
                 currentUVDescription.innerHTML=" (Extreme!!)"
             }
 
-
             // Match correct weather icon
             var currentWeatherCode = weatherData.daily[0].weather[0].icon
-            currentIcon.src = ("http://openweathermap.org/img/wn/" + currentWeatherCode + "@4x.png")
+            currentIcon.src = ("http://openweathermap.org/img/wn/" + currentWeatherCode + "@2x.png")
 
             // Loop to create forecast cards
             for (let i = 1; i < 6; i++) {
@@ -123,15 +141,16 @@ function fillCards() {
                 forecastTemp.textContent = (weatherData.daily[i].temp.max).toFixed(1) + " °C"
                 forecastWindSpeed.textContent = weatherData.daily[i].wind_speed + " m/s" 
                 forecastHumidity.textContent = weatherData.daily[i].humidity + " %"
-                forecastIcon.src = ("http://openweathermap.org/img/wn/" + forecastWeatherCode + "@4x.png")
+                forecastIcon.src = ("http://openweathermap.org/img/wn/" + forecastWeatherCode + "@2x.png")
             }
             
         })
+        
         .catch(function() {
             // Show alert if city name is not recognized
             alertCity.setAttribute("class", "alert alert-danger mt-2 show")
         })
-    
+
 }
 
 
@@ -140,6 +159,13 @@ function getCurrentWeatherAPI(city) {
     return fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
     ).then(function(response) {
+        // If 404 is returned then set the addHistoryInterlock to 1
+        if ( response.status !== 404 ) {
+            addHistoryInterlock = 0
+        } else {
+            addHistoryInterlock = 1
+        }
+
         return response.json();
     });
 }
@@ -165,6 +191,6 @@ function getWeather(city) {
 
 
 // TODO
-// Autocomplete on search form -> Try not to allow any incorrect cities to be submitted
+// Pre-populate Perth
 // Local storage for search history
 // Hover attributes to list items -> cursor pointer
