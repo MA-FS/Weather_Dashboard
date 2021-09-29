@@ -26,6 +26,8 @@ submitBtn.addEventListener("click", function (event) {
     fillCards()
 
     // Set a delay to allow the interlock to change state depending on response.status
+    addHistoryInterlock = 1
+
     setTimeout(() => {
 
         // If the response status returns 404, do not print search history.
@@ -34,7 +36,7 @@ submitBtn.addEventListener("click", function (event) {
         } else {
             return
         }
-    }, 1000);
+    }, 500);
     
 });
 
@@ -44,6 +46,8 @@ inputForm.addEventListener('submit', function(event){
     fillCards()
 
     // Set a delay to allow the interlock to change state depending on response.status
+    addHistoryInterlock = 1
+
     setTimeout(() => {
 
         // If the response status returns 404, do not print search history.
@@ -52,10 +56,8 @@ inputForm.addEventListener('submit', function(event){
         } else {
             return
         }
-    }, 1000);
+    }, 500);
 })
-
-
 
 // When the user submits a search, add search to the search history list
 function addHistory() {
@@ -172,7 +174,6 @@ function fillCards() {
     })
 
 }
-
 
 // Get the current weather API response and retreive as .json
 function getCurrentWeatherAPI(city) {

@@ -3,11 +3,14 @@
     --secondary: #A2ACBD;
     --headings: #1B1F26;
     --list: #BEA5AB;
-
 }
 
 html,
 body {
+    background-color: var(--primary);
+}
+
+section {
     background-color: var(--primary);
 }
 
@@ -28,10 +31,6 @@ li:hover {
     margin: 2px;
     color: var(--primary); 
     border-radius: 35px;
-}
-
-section {
-    background-color: var(--primary);
 }
 
 .fas {
@@ -60,7 +59,8 @@ h6 {
     color: var(--headings);
 }
 
-.btn {
+.btn,
+.banner {
     background-color: #0095FA;
 }
 
